@@ -21,9 +21,17 @@
       <text class="text-green-500">base</text>
     </view>
 
+    <view class="text-center mt-4">
+      serviceId:
+      <text class="text-green-500">{{ serviceId }}</text>
+      characteristicId:
+      <text class="text-green-500">{{ characteristicId }}</text>
+    </view>
+
     <view>
       <wd-button @click="initBlue" block my-2>初始化蓝牙</wd-button>
       <wd-button @click="discovery" block my-2>搜索附近蓝牙设备</wd-button>
+      <wd-button @click="clea" block my-2>清空附近蓝牙</wd-button>
       <view>
         <text>附近蓝牙</text>
         <view v-for="(item, index) in blueDeviceList" :key="index" @click="connect(item)" py-4 px-2>
@@ -43,12 +51,33 @@
       <wd-button @click="getCharacteristics" block my-2>获取特征值</wd-button>
       <wd-button @click="notify" block my-2>开启消息监听</wd-button>
       <wd-button @click="send" block my-2>发送数据</wd-button>
+      <wd-button @click="send" block my-2>发送数据</wd-button>
+      <wd-button @click="send" block my-2>发送数据</wd-button>
     </view>
   </view>
 </template>
 
 <script lang="ts" setup>
 import PLATFORM from '@/utils/platform'
+
+const serviceId = '0000FFE0-0000-1000-8000-00805F9B34FB'
+const characteristicId = '0000FFE1-0000-1000-8000-00805F9B34FB'
+
+/* 车的指令 */
+const carInfo = {
+  btName: '257000036675',
+  btMac: 'C5:49:D1:BB:F6:64',
+  openDoor:
+    'Nzgo6+eGn1u5YQqYt54btkkI0QafnUtWnx5zYQ4+mGQgdT5kaV2cxs0cuDvawEL5FY1/jzYiuAtFlm/WmcXEBBYgPMTaUdXDD5Fv1EsG7j/J6y7XJidIFFTKWX+I927LiAW7+I2QcprUW8SiThyz++u8VMdwRevqNTQiSvHEhyQ=',
+  openAndOn:
+    'kwg27iGDh5PepFoQ37x6pkOqv9kG40IVfvxdRPryBevT/hJCjFt8li+Y7095yJXO1CK7of7GqGU4WcDnc3uo/MlbxpdPUxDark7E/LdcEGmYsAi6SHbeD7tQRXUBUcNEVfl2WNdYSKBV+Wk+bXStLh1FqGuSvWMgI2nrzz6N0Zw=',
+  closeDoor:
+    'cgtIGdV4mxzRN4AdiY8GXMMfq6e1KtW3bCd5VI3LsZp6rdsTYgD+VNOAKMZ5Lvc1dlwsOdN4wFjLOdBNCDf478jbfK3Hdda1+14BApVlQMmhkhvvY3b+CrTa3bSXO66wowBucDOSW8UAO3LR9zs0zVOZkVxLUBunaFVQUsDIbGM=',
+  closeAndOff:
+    'JTBVPJpWEU/aYzq/SaxupdHt746QEIeO2zCekAVIAzbBGHVOTUsfkeVie+LslPocsEf9JSW9JkDMjZwwl3z34SMOus3J0Qq5FJrYQ8WwoHIDuqKULZYwTxbyp2WnQWAPFufR09UXaz6GF1HRxQy1L1XdZPHH49xlV3UjZn4jscE=',
+  carState:
+    'Ns9WAp2dw+LzN8RbVgNgs2xdWiWolTKCzblVgUGGM7HAq3zOXehjO3YXVZOokv0Em26UgJ8sfXjtMLUuQ7+oKE1oNgE84Fn0ZTVc9WEpBlOWIaEefELaP5me4aToQhlETjZerjKGJao2XufaQVP62pO0ifqN7qaM7eFj8KgOxCA=',
+}
 
 // 搜索到的蓝牙设备列表
 const blueDeviceList = ref([])
@@ -100,6 +129,10 @@ const device = ref({
   id: '',
 })
 
+// 蓝牙服务列表
+
+const servicesList = ref<{ uuid: string; isPrimary: boolean }[]>([])
+
 // 【4】连接设备
 function connect(data) {
   console.log(data)
@@ -148,6 +181,8 @@ function getServices() {
   uni.getBLEDeviceServices({
     deviceId: device.value.id, // 设备ID，在上一步【4】里获取
     success(res) {
+      servicesList.value = res.services
+
       console.log(res)
     },
     fail(err) {
@@ -160,7 +195,7 @@ function getServices() {
 function getCharacteristics() {
   uni.getBLEDeviceCharacteristics({
     deviceId: device.value.id, // 设备ID，在【4】里获取到
-    serviceId: '0000FFE0-0000-1000-8000-00805F9B34FB', // 服务UUID，在【6】里能获取到
+    serviceId, // 服务UUID，在【6】里能获取到
     success(res) {
       console.log(res)
     },
@@ -173,9 +208,10 @@ function getCharacteristics() {
 // 【8】开启消息监听
 function notify() {
   uni.notifyBLECharacteristicValueChange({
+    state: true,
     deviceId: device.value.id, // 设备ID，在【4】里获取到
-    serviceId: '0000FFE0-0000-1000-8000-00805F9B34FB', // 服务UUID，在【6】里能获取到
-    characteristicId: '0000FFE1-0000-1000-8000-00805F9B34FB', // 特征值，在【7】里能获取到
+    serviceId, // 服务UUID，在【6】里能获取到
+    characteristicId, // 特征值，在【7】里能获取到
     success(res) {
       console.log(res)
 
@@ -197,7 +233,7 @@ function ab2hex(buffer) {
 }
 
 // 将16进制的内容转成我们看得懂的字符串内容
-function hexCharCodeToStr(hexCharCodeStr) {
+function hexCharCodeToStr(hexCharCodeStr: string) {
   const trimedStr = hexCharCodeStr.trim()
   const rawStr = trimedStr.substr(0, 2).toLowerCase() === '0x' ? trimedStr.substr(2) : trimedStr
   const len = rawStr.length
@@ -216,17 +252,16 @@ function hexCharCodeToStr(hexCharCodeStr) {
 
 // 【9】监听消息变化
 function listenValueChange() {
-  uni.onBLECharacteristicValueChange((res) => {
+  uni.onBLECharacteristicValueChange(async (res) => {
     // 结果
     console.log(res)
-
     // 结果里有个value值，该值为 ArrayBuffer 类型，所以在控制台无法用肉眼观察到，必须将该值转换为16进制
     const resHex = ab2hex(res.value)
     console.log(resHex)
 
     // 最后将16进制转换为ascii码，就能看到对应的结果
     const result = hexCharCodeToStr(resHex)
-    console.log(result)
+    console.log(result, '12312312312')
   })
 }
 
@@ -234,7 +269,8 @@ function listenValueChange() {
 function send() {
   // 向蓝牙设备发送一个0x00的16进制数据
 
-  const msg = 'hello'
+  const msg =
+    'Nzgo6+eGn1u5YQqYt54btkkI0QafnUtWnx5zYQ4+mGQgdT5kaV2cxs0cuDvawEL5FY1/jzYiuAtFlm/WmcXEBBYgPMTaUdXDD5Fv1EsG7j/J6y7XJidIFFTKWX+I927LiAW7+I2QcprUW8SiThyz++u8VMdwRevqNTQiSvHEhyQ='
 
   const buffer = new ArrayBuffer(msg.length)
   const dataView = new DataView(buffer)
@@ -244,18 +280,29 @@ function send() {
     dataView.setUint8(i, msg.charAt(i).charCodeAt())
   }
 
+  console.log(dataView, 'dataView')
+
   uni.writeBLECharacteristicValue({
     deviceId: device.value.id, // 设备ID，在【4】里获取到
-    serviceId: '0000FFE0-0000-1000-8000-00805F9B34FB', // 服务UUID，在【6】里能获取到
-    characteristicId: '0000FFE1-0000-1000-8000-00805F9B34FB', // 特征值，在【7】里能获取到
+    serviceId, // 服务UUID，在【6】里能获取到
+    characteristicId, // 特征值，在【7】里能获取到
     value: buffer as unknown as any[],
+    writeType: 'write',
     success(res) {
-      console.log(res)
+      console.log('指令下发成功==', res)
     },
     fail(err) {
       console.error(err)
     },
   })
+}
+/* 清除蓝牙 */
+function clea() {
+  blueDeviceList.value = []
+  device.value = {
+    id: '',
+    name: '',
+  }
 }
 
 defineOptions({
