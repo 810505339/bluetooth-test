@@ -1,3 +1,4 @@
+<!-- 根节点看App.ku.vue -->
 <script setup lang="ts">
 import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
 
