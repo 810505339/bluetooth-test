@@ -5,7 +5,11 @@
 
 interface NavigateToOptions {
   url: "/pages/index/index" |
-       "/pages/about/about";
+       "/pages/about/about" |
+       "/pages/about/index" |
+       "/pages/map/index" |
+       "/pages/setting/index" |
+       "/pages/z-page/index";
 }
 interface RedirectToOptions extends NavigateToOptions {}
 

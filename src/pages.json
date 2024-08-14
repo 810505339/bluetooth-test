@@ -52,6 +52,40 @@
       "style": {
         "navigationBarTitleText": "关于"
       }
+    },
+    {
+      "path": "pages/about/index",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationBarTitleText": "关于"
+      }
+    },
+    {
+      "path": "pages/map/index",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationBarTitleText": "测试"
+      }
+    },
+    {
+      "path": "pages/setting/index",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationBarTitleText": "设置",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/z-page/index",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationBarTitleText": "下拉刷新",
+        "navigationStyle": "custom"
+      }
     }
   ],
   "subPackages": []
