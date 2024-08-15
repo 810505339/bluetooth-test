@@ -21,17 +21,17 @@ page {
   // --wot-button-primary-bg-color: green;
 }
 .base-layout {
-  --wot-fs-content: baseFontMultiper();
-  --wot-notice-bar-prefix-size: baseFontMultiper(var(--1.125));
-  --wot-navbar-title-font-size: baseFontMultiper(var(--1.125));
-  --wot-navbar-desc-font-size: baseFontMultiper();
-  --wot-cell-title-fs: baseFontMultiper();
-  --wot-fs-title: baseFontMultiper();
-  --wot-cell-icon-size: baseFontMultiper();
-  --wot-navbar-arrow-size: baseFontMultiper(var(--1.150));
-  --wot-calendar-panel-title-fs: baseFontMultiper(var(--0.875));
-  --wot-tabbar-item-icon-size: baseFontMultiper(var(--1.125));
-  // --wot-tabbar-item-title-font-size:calc(var(--base-font-size)*0.625);
+  --wot-fs-content: var(--base-font-size);
+  --wot-notice-bar-prefix-size: calc(var(--base-font-size) * var(--b1125));
+  --wot-navbar-title-font-size: calc(var(--base-font-size) * var(--b1125));
+  --wot-navbar-desc-font-size: var(--base-font-size);
+  --wot-cell-title-fs: var(--base-font-size);
+  --wot-fs-title: var(--base-font-size);
+  --wot-cell-icon-size: var(--base-font-size);
+  --wot-navbar-arrow-size: calc(var(--base-font-size) * var(--b1150));
+  --wot-calendar-panel-title-fs: calc(var(--base-font-size) * var(--b0875));
+  --wot-tabbar-item-icon-size: calc(var(--base-font-size) * var(--b1125));
+  --wot-tabbar-item-title-font-size: calc(var(--base-font-size) * var(--b0625));
 }
 .dark {
   color: #ffffff;
