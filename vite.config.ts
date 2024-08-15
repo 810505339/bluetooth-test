@@ -17,6 +17,7 @@ import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { visualizer } from 'rollup-plugin-visualizer'
 import ViteRestart from 'vite-plugin-restart'
+import UniKuRoot from '@uni-ku/root'
 
 // https://vitejs.dev/config/
 export default ({ command, mode }) => {
@@ -62,6 +63,7 @@ export default ({ command, mode }) => {
       UniPlatform(),
       UniManifest(),
       // UniXXX 需要在 Uni 之前引入
+      UniKuRoot(),
       Uni(),
       {
         // 临时解决 dcloudio 官方的 @dcloudio/uni-mp-compiler 出现的编译 BUG
@@ -77,7 +79,7 @@ export default ({ command, mode }) => {
       },
       UnoCSS(),
       AutoImport({
-        imports: ['vue', 'uni-app'],
+        imports: ['vue', 'uni-app', 'pinia'],
         dts: 'src/types/auto-import.d.ts',
         dirs: ['src/hooks'], // 自动导入 hooks
         eslintrc: { enabled: true },

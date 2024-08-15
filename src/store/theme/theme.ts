@@ -14,9 +14,9 @@ export const useThemeStore = defineStore(
     /* 切换暗黑模式 */
     function toggleTheme(mode?: 'light' | 'dark') {
       theme.value = mode || (theme.value === 'light' ? 'dark' : 'light')
-      uni.setNavigationBarColor({
-        frontColor: theme.value === 'light' ? '#000000' : '#ffffff',
-      })
+      // uni.setNavigationBarColor({
+      //   frontColor: theme.value === 'light' ? '#000000' : '#ffffff',
+      // })
     }
     /* 切换文字大小 */
     function changeFontSize(rootFontSize: string) {

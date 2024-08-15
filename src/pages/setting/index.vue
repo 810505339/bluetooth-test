@@ -82,10 +82,12 @@
 
 <script lang="ts" setup>
 import { useThemeStore } from '@/store'
+import { isH5, platform } from '@/utils/platform'
 import { useQueue, useMessage } from 'wot-design-uni'
 const message = useMessage()
 const { closeOutside } = useQueue()
 const themeStore = useThemeStore()
+console.log(themeStore)
 const { theme, rootStyle, themeVars } = storeToRefs(themeStore)
 const value = ref<number>(Date.now())
 function handleConfirm({ value }) {
@@ -134,7 +136,9 @@ const checked = ref<boolean>(true)
 
 function handleChange({ value }) {
   setTimeout(() => {
-    plus.runtime.restart()
+    if (!isH5) {
+      plus.runtime.restart()
+    }
   }, 1000)
 }
 </script>

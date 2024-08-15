@@ -1,4 +1,8 @@
-// @import './iconfont.css';
+@import './var'; /* 存储了css变量 */
+/* base-font倍率 */
+@function baseFontMultiper($multiplier: 1) {
+  @return calc(var(--base-font-size) * $multiplier);
+}
 
 .test {
   // 可以通过 @apply 多个样式封装整体样式
@@ -15,4 +19,21 @@ page {
 
   // 修改按钮背景色
   // --wot-button-primary-bg-color: green;
+}
+.base-layout {
+  --wot-fs-content: baseFontMultiper();
+  --wot-notice-bar-prefix-size: baseFontMultiper(var(--1.125));
+  --wot-navbar-title-font-size: baseFontMultiper(var(--1.125));
+  --wot-navbar-desc-font-size: baseFontMultiper();
+  --wot-cell-title-fs: baseFontMultiper();
+  --wot-fs-title: baseFontMultiper();
+  --wot-cell-icon-size: baseFontMultiper();
+  --wot-navbar-arrow-size: baseFontMultiper(var(--1.150));
+  --wot-calendar-panel-title-fs: baseFontMultiper(var(--0.875));
+  --wot-tabbar-item-icon-size: baseFontMultiper(var(--1.125));
+  // --wot-tabbar-item-title-font-size:calc(var(--base-font-size)*0.625);
+}
+.dark {
+  color: #ffffff;
+  background: #1b1b1b;
 }
