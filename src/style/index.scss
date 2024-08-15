@@ -32,6 +32,7 @@ page {
   --wot-calendar-panel-title-fs: calc(var(--base-font-size) * var(--b0875));
   --wot-tabbar-item-icon-size: calc(var(--base-font-size) * var(--b1125));
   --wot-tabbar-item-title-font-size: calc(var(--base-font-size) * var(--b0625));
+  min-height: 100vh;
 }
 .dark {
   color: #ffffff;

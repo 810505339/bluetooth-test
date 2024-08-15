@@ -3,6 +3,7 @@
     <slot />
     <wd-toast />
     <wd-message-box />
+    <fg-tabbar />
   </wd-config-provider>
 </template>
 

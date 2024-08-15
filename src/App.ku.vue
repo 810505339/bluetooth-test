@@ -2,6 +2,10 @@
 import { useThemeStore } from '@/store'
 const themeStore = useThemeStore()
 const { themeVars, theme, rootStyle } = storeToRefs(themeStore)
+
+onLaunch(() => {
+  themeStore.initTheme()
+})
 </script>
 
 <template>
