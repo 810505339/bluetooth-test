@@ -11,9 +11,7 @@
 
 <template>
   <view class="" pt-safe>
-    测试
-    <wd-button>你好</wd-button>
-    <!-- <z-paging
+    <z-paging
       v-model="list"
       @query="queryList"
       ref="paging"
@@ -28,7 +26,7 @@
       <view p-5 border-b text-center v-for="(item, index) in list" :key="index">
         {{ item }}
       </view>
-    </z-paging> -->
+    </z-paging>
     <!-- 使用页面滚动 -->
     <!-- <z-paging
       :use-page-scroll="true"
@@ -51,26 +49,26 @@
 </template>
 
 <script lang="ts" setup>
-// import { onPageScroll, onReachBottom } from '@dcloudio/uni-app'
-// import useZPaging from 'z-paging/components/z-paging/js/hooks/useZPaging'
-// const list = ref([])
-// const paging = ref<ZPagingInstance>()
-// useZPaging(paging)
-// function search() {
-//   paging.value?.reload(true)
-// }
-// // z-paging相关Events可以通过ZPagingEvent.Xxx设置Event类型，例如@query对应ZPagingEvent.Query、@scroll对应ZPagingEvent.Scroll
-// const queryList: ZPagingEvent.Query = (pageNo, pageSize) => {
-//   setTimeout(() => {
-//     const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-//     paging.value?.complete(list)
-//     console.log(pageNo, pageSize)
-//   }, 500)
-// }
+import { onPageScroll, onReachBottom } from '@dcloudio/uni-app'
+import useZPaging from 'z-paging/components/z-paging/js/hooks/useZPaging'
+const list = ref([])
+const paging = ref()
+useZPaging(paging)
+function search() {
+  paging.value?.reload(true)
+}
+// z-paging相关Events可以通过ZPagingEvent.Xxx设置Event类型，例如@query对应ZPagingEvent.Query、@scroll对应ZPagingEvent.Scroll
+const queryList: ZPagingEvent.Query = (pageNo, pageSize) => {
+  setTimeout(() => {
+    const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+    paging.value?.complete(list)
+    console.log(pageNo, pageSize)
+  }, 500)
+}
 
-// onPageScroll((e) => {
-//   console.log(e)
-// })
+onPageScroll((e) => {
+  console.log(e)
+})
 </script>
 
 <style lang="scss" scoped>

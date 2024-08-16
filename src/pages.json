@@ -4,7 +4,11 @@
     "navigationBarTitleText": "unibest",
     "navigationBarBackgroundColor": "#f8f8f8",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#FFFFFF"
+    "backgroundColor": "#FFFFFF",
+    "app-plus": {
+      "bounce": "none",
+      "titleNView": false
+    }
   },
   "easycom": {
     "autoscan": true,
@@ -33,13 +37,13 @@
         "icon": "home",
         "iconType": "wot",
         "pagePath": "pages/setting/index",
-        "text": "设置"
+        "text": "服务"
       },
       {
         "icon": "home",
         "iconType": "wot",
         "pagePath": "pages/about/about",
-        "text": "关于"
+        "text": "定位"
       }
     ]
   },
@@ -55,8 +59,10 @@
     {
       "path": "pages/about/about",
       "type": "page",
+      "layout": "default",
       "style": {
-        "navigationBarTitleText": "关于"
+        "navigationBarTitleText": "下拉刷新",
+        "navigationStyle": "custom"
       }
     },
     {
@@ -64,7 +70,8 @@
       "type": "page",
       "layout": "default",
       "style": {
-        "navigationBarTitleText": "关于"
+        "navigationBarTitleText": "下拉刷新",
+        "navigationStyle": "custom"
       }
     },
     {

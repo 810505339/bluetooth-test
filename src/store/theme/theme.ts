@@ -24,6 +24,7 @@ export const useThemeStore = defineStore(
     }
     /* 初始化theme */
     function initTheme() {
+      console.log(theme.value)
       uni.setNavigationBarColor({
         frontColor: theme.value === 'light' ? '#000000' : '#ffffff',
       })

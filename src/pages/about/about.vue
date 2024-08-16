@@ -1,23 +1,27 @@
-<route lang="json5">
+<!-- 实例 -->
+<route lang="json5" type="page">
 {
+  layout: 'default',
   style: {
-    navigationBarTitleText: '关于',
+    navigationBarTitleText: '下拉刷新',
+    navigationStyle: 'custom',
   },
 }
 </route>
 
 <template>
-  <view>你好</view>
+  <view>
+    <wd-input type="text" placeholder="请输入用户名" />
+  </view>
 </template>
 
-<script lang="ts" setup>
-// 获取屏幕边界到安全区域距离
-const { safeAreaInsets } = uni.getSystemInfoSync()
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss" scoped>
-.test-css {
-  // mt-4=>1rem=>16px;
-  margin-top: 16px;
+//
+::v-deep .wd-input {
+  & .wd-input__inner {
+    @apply text-amber;
+  }
 }
 </style>

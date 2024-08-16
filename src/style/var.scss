@@ -1,7 +1,27 @@
+/* base-font倍率 这样不行不知道为什么*/
+@function baseFontMultiper($multiplier: 1) {
+  @return calc(var(--base-font-size) * $multiplier);
+}
 :root,
 page {
-  --b1125: 1.125;
-  --b1150: 1.15;
-  --b0875: 0.875;
-  --b0625: 0.625;
+  // 主题色
+  --wot-color-theme: #0052fe;
+  --wot-color-secondary-theme: #e8f0ff;
+}
+.base-layout {
+  --base-font-size: 1rem;
+  --f10: calc(var(--base-font-size) * 0.625);
+  --f12: calc(var(--base-font-size) * 0.75);
+  --f14: calc(var(--base-font-size) * 0.875);
+  --f16: var(--base-font-size);
+  --f18: calc(var(--base-font-size) * 1.125);
+  --f20: calc(var(--base-font-size) * 1.25);
+  --f28: calc(var(--base-font-size) * 1.75);
+  /* 边框 */
+  --b2: 2px;
+  --b4: 4px;
+  --b6: 6px;
+  --b8: 8px;
+  /* 修复主题色 */
+  --wot-radio-dot-checked-bg: transparent;
 }

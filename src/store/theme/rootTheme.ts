@@ -2,12 +2,12 @@ import { ConfigProviderThemeVars } from 'wot-design-uni'
 /* 默认的主题list */
 export const colorColumns = [
   {
-    value: 'red',
-    label: '红色',
+    value: '#0055FE',
+    label: '蓝色',
   },
   {
-    value: 'blue',
-    label: '蓝色',
+    value: 'red',
+    label: '红色',
   },
   {
     value: 'green',

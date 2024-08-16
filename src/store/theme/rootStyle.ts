@@ -1,15 +1,15 @@
 /* 默认的文字大小列表 */
 export const fontSizecolumns = [
   {
-    value: '16px',
+    value: '1rem',
     label: '标准',
   },
   {
-    value: '18px',
+    value: '1.125rem',
     label: '大',
   },
   {
-    value: '32px',
+    value: '1.25rem',
     label: '特大',
   },
 ]

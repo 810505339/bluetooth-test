@@ -7,6 +7,10 @@ export default defineUniPages({
     navigationBarBackgroundColor: '#f8f8f8',
     navigationBarTextStyle: 'black',
     backgroundColor: '#FFFFFF',
+    'app-plus': {
+      bounce: 'none', // 将回弹属性关掉
+      titleNView: false, // 关闭原生的状态高度
+    },
   },
   easycom: {
     autoscan: true,
@@ -36,13 +40,13 @@ export default defineUniPages({
         icon: 'home',
         iconType: 'wot',
         pagePath: 'pages/setting/index',
-        text: '设置',
+        text: '服务',
       },
       {
         icon: 'home',
         iconType: 'wot',
         pagePath: 'pages/about/about',
-        text: '关于',
+        text: '定位',
       },
     ],
   },

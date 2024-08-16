@@ -1,8 +1,4 @@
 @import './var'; /* 存储了css变量 */
-/* base-font倍率 */
-@function baseFontMultiper($multiplier: 1) {
-  @return calc(var(--base-font-size) * $multiplier);
-}
 
 .test {
   // 可以通过 @apply 多个样式封装整体样式
@@ -12,29 +8,58 @@
   color: red;
 }
 
-:root,
-page {
-  // 修改按主题色
-  // --wot-color-theme: #37c2bc;
-
-  // 修改按钮背景色
-  // --wot-button-primary-bg-color: green;
-}
 .base-layout {
-  --wot-fs-content: var(--base-font-size);
-  --wot-notice-bar-prefix-size: calc(var(--base-font-size) * var(--b1125));
-  --wot-navbar-title-font-size: calc(var(--base-font-size) * var(--b1125));
-  --wot-navbar-desc-font-size: var(--base-font-size);
-  --wot-cell-title-fs: var(--base-font-size);
-  --wot-fs-title: var(--base-font-size);
-  --wot-cell-icon-size: var(--base-font-size);
-  --wot-navbar-arrow-size: calc(var(--base-font-size) * var(--b1150));
-  --wot-calendar-panel-title-fs: calc(var(--base-font-size) * var(--b0875));
-  --wot-tabbar-item-icon-size: calc(var(--base-font-size) * var(--b1125));
-  --wot-tabbar-item-title-font-size: calc(var(--base-font-size) * var(--b0625));
-  min-height: 100vh;
+  --wot-fs-content: var(--f16);
+  --wot-fs-secondary: var(--f12);
+  --wot-notice-bar-prefix-size: var(--f18);
+  --wot-navbar-title-font-size: var(--f18);
+  --wot-navbar-desc-font-size: var(--f16);
+  --wot-cell-title-fs: var(--f16);
+  --wot-fs-title: var(--f16);
+  --wot-cell-icon-size: var(--f16);
+  --wot-navbar-arrow-size: var(--f18);
+  --wot-calendar-panel-title-fs: var(--f14);
+  --wot-tabbar-item-icon-size: var(--f18);
+  --wot-tabbar-item-title-font-size: var(--f10);
+  --wot-search-icon-size: var(--f18);
+  ----wot-search-clear-icon-size: var(--f16);
+  --wot-checkbox-label-fs: var(--f14);
+  --wot-radio-size: var(--f16);
+  --wot-message-box-title-fs: var(--f16);
+  --wot-textarea-bg: transparent;
+  --wot-textarea-count-fs: var(--f14);
+  --wot-textarea-icon-size: var(--f16);
+  --wot-button-medium-radius: var(--b4);
+  /* 复选框 */
+  // --wot-checkbox-icon-size: var(--f16);
+  /* 搜索相关 */
+  --wot-search-input-radius: var(--b6);
+  --wot-search-input-height: 40px;
+  /* 按钮相关 */
+  --wot-button-disabled-opacity: 0.3;
 }
+/* 基本样式 */
+.base-layout {
+  min-height: 100vh;
+  font-size: var(--f16);
+  & .wd-radio.is-dot .wd-radio__shape::before {
+    background-color: var(--wot-color-theme) !important;
+  }
+}
+
 .dark {
   color: #ffffff;
   background: #1b1b1b;
+}
+
+.base-layout .wd-segmented__item {
+  font-size: var(--f16) !important;
+}
+
+.base-layout .btn-secondary.wd-button.is-primary {
+  @apply bg-secondary text-primary;
+}
+
+.base-layout .wd-button.is-round {
+  border-radius: var(--wot-button-medium-radius, 4px);
 }

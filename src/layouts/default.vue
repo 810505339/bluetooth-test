@@ -1,18 +1,11 @@
 <template>
-  <wd-config-provider :themeVars="themeVars">
+  <view>
+    <view status-bar w="100%">
+      <!-- 这里是状态栏 -->
+    </view>
     <slot />
-    <wd-toast />
-    <wd-message-box />
     <fg-tabbar />
-  </wd-config-provider>
+  </view>
 </template>
 
-<script lang="ts" setup>
-import type { ConfigProviderThemeVars } from 'wot-design-uni'
-
-const themeVars: ConfigProviderThemeVars = {
-  // colorTheme: 'red',
-  // buttonPrimaryBgColor: '#07c160',
-  // buttonPrimaryColor: '#07c160',
-}
-</script>
+<script lang="ts" setup></script>

@@ -1,9 +1,5 @@
 <template>
-  <wd-config-provider :themeVars="themeVars">
-    <slot />
-    <wd-toast />
-    <wd-message-box />
-  </wd-config-provider>
+  <slot />
 </template>
 
 <script lang="ts" setup>

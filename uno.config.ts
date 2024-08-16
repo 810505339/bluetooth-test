@@ -76,7 +76,46 @@ export default defineConfig({
     ],
     ['pt-safe', { 'padding-top': 'env(safe-area-inset-top)' }],
     ['pb-safe', { 'padding-bottom': 'env(safe-area-inset-bottom)' }],
+    [
+      'status-bar',
+      {
+        height: 'var(--status-bar-height)',
+        width: '100%',
+      },
+    ],
   ],
+  theme: {
+    colors: {
+      primary: 'var(--wot-color-theme)',
+      secondary: 'var(--wot-color-secondary-theme)',
+      b100: '#F3F3F4',
+      b200: '#E7E8E9',
+      b300: '#8B8F97',
+      f100: '#F8F8F9 ',
+      f200: '#F3F3F4 ',
+      f300: '#E7E8E9',
+      f400: '#C9CBCF',
+      f500: '#575A60',
+      t100: '#CCCED1',
+      t200: '#8B8F97 ',
+      t300: '#575A60 ',
+      t400: '#212225',
+    },
+    borderRadius: {
+      2: 'var(--b2)',
+      4: 'var(--b4)',
+      6: 'var(--b6)',
+      8: 'var(--b8)',
+    },
+    fontSize: {
+      10: 'var( --f10)',
+      12: 'var( --f12)',
+      14: 'var( --f14)',
+      16: 'var( --f16)',
+      18: 'var( --f18)',
+      20: 'var( --f20)',
+    },
+  },
 })
 
 /**
