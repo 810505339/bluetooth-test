@@ -19,6 +19,10 @@
         </view>
       </template>
     </wd-search>
+
+    <wd-message-box selector="wd-message-box-slot">
+      <wd-button @click="closeMessage">关闭</wd-button>
+    </wd-message-box>
     <view>
       <view py-4>
         <text>当前的模式是:{{ theme }}</text>
@@ -219,6 +223,7 @@ function handleChange({ value }) {
 }
 
 function handleClick() {
+  console.log(message)
   message
     .confirm({
       title: '评分',
@@ -229,6 +234,10 @@ function handleClick() {
     .catch((error) => {
       console.log(error)
     })
+}
+
+function closeMessage() {
+  message.close()
 }
 
 const show = ref<boolean>(false)

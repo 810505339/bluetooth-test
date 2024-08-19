@@ -1,4 +1,4 @@
-<!-- <route lang="json5" type="page">
+<route lang="json5" type="page">
 {
   layout: 'default',
   style: {
@@ -651,27 +651,7 @@ function starts() {
 
 <style lang="scss" scoped>
 #map {
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
 }
-</style> -->
-<route lang="json5" type="page">
-{
-  layout: 'default',
-  style: {
-    navigationBarTitleText: '测试',
-  },
-}
-</route>
-
-<template>
-  <view class="">测试</view>
-</template>
-
-<script lang="ts" setup>
-//
-</script>
-
-<style lang="scss" scoped>
-//
 </style>
