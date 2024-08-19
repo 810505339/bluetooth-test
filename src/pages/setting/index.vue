@@ -11,7 +11,6 @@
 <template>
   <view @click="closeOutside">
     <wd-navbar title="设置" fixed placeholder safeAreaInsetTop left-arrow />
-
     <wd-search placeholder-left>
       <template #suffix>
         <view flex items-center mx-4 gap-1 @click="handleClick">
@@ -136,6 +135,11 @@
           auto-height
         />
       </view>
+      <view>
+        <view my-2>动态组件(不兼容小程序)</view>
+        <wd-button @click="changeTag">切换</wd-button>
+        <component :is="tag" />
+      </view>
     </view>
   </view>
 </template>
@@ -144,6 +148,15 @@
 import { useThemeStore } from '@/store'
 import { isH5, platform } from '@/utils/platform'
 import { useQueue, useMessage } from 'wot-design-uni'
+import TestA from './components/test-a.vue'
+import TestB from './components/test-b.vue'
+
+const tag = shallowRef(TestA)
+function changeTag() {
+  console.log(tag.value.name)
+  tag.value = tag.value.name === 'test-a' ? TestB : TestA
+}
+
 const message = useMessage()
 const { closeOutside } = useQueue()
 const themeStore = useThemeStore()
