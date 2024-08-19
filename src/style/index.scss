@@ -23,27 +23,39 @@
   --wot-tabbar-item-title-font-size: var(--f10);
   --wot-search-icon-size: var(--f18);
   ----wot-search-clear-icon-size: var(--f16);
-  --wot-checkbox-label-fs: var(--f14);
+  --wot-checkbox-label-fs: var(--f16);
   --wot-radio-size: var(--f16);
   --wot-message-box-title-fs: var(--f16);
   --wot-textarea-bg: transparent;
   --wot-textarea-count-fs: var(--f14);
   --wot-textarea-icon-size: var(--f16);
+  --wot-checkbox-button-font-size: var(--f14);
   --wot-button-medium-radius: var(--b4);
   /* 复选框 */
-  // --wot-checkbox-icon-size: var(--f16);
+  --wot-checkbox-icon-size: var(--f16);
+  --wot-checkbox-size: var(--f14);
+  --wot-radio-dot-disabled-bg: #f2f2f2;
   /* 搜索相关 */
   --wot-search-input-radius: var(--b6);
   --wot-search-input-height: 40px;
   /* 按钮相关 */
   --wot-button-disabled-opacity: 0.3;
+  /* 修复主题色 */
+  --wot-radio-dot-checked-bg: transparent;
+}
+/* 暗黑模式下面的样式 */
+.base-layout .wot-theme-dark {
+  --wot-radio-dot-checked-bg: var(--wot-color-theme);
 }
 /* 基本样式 */
 .base-layout {
   min-height: 100vh;
   font-size: var(--f16);
-  & .wd-radio.is-dot .wd-radio__shape::before {
-    background-color: var(--wot-color-theme) !important;
+  & .wd-radio.is-dot.is-checked .wd-radio__shape::before {
+    background-color: var(--wot-color-theme);
+  }
+  & .is-checked.is-dot.is-disabled .wd-radio__shape::before {
+    background-color: #ffffff;
   }
 }
 

@@ -18,10 +18,21 @@ page {
   --f20: calc(var(--base-font-size) * 1.25);
   --f28: calc(var(--base-font-size) * 1.75);
   /* 边框 */
-  --b2: 2px;
-  --b4: 4px;
-  --b6: 6px;
-  --b8: 8px;
-  /* 修复主题色 */
-  --wot-radio-dot-checked-bg: transparent;
+  --br2: 2px;
+  --br4: 4px;
+  --br6: 6px;
+  --br8: 8px;
+  /* 颜色 */
+  --b100: #f3f3f4;
+  --b200: #e7e8e9;
+  --b300: #8b8f97;
+  --f100: #f8f8f9;
+  --f200: #f3f3f4;
+  --f300: #e7e8e9;
+  --f400: #c9cbcf;
+  --f500: #575a60;
+  --t100: #ccced1;
+  --t200: #8b8f97;
+  --t300: #575a60;
+  --t400: #212225;
 }

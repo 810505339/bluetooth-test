@@ -102,10 +102,10 @@ export default defineConfig({
       t400: '#212225',
     },
     borderRadius: {
-      2: 'var(--b2)',
-      4: 'var(--b4)',
-      6: 'var(--b6)',
-      8: 'var(--b8)',
+      2: 'var(--br2)',
+      4: 'var(--br4)',
+      6: 'var(--br6)',
+      8: 'var(--br8)',
     },
     fontSize: {
       10: 'var( --f10)',

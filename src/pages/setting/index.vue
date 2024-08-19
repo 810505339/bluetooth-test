@@ -27,6 +27,15 @@
       </view>
       <wd-select-picker
         :show-confirm="false"
+        label="字体大小"
+        :columns="themeStore.fontSizecolumns"
+        v-model="rootStyle.rootFontSize"
+        :z-index="100"
+        type="radio"
+        @change="handleChange"
+      />
+      <wd-select-picker
+        :show-confirm="false"
         label="切换颜色"
         :columns="themeStore.colorColumns"
         v-model="themeVars.colorTheme"
@@ -44,30 +53,19 @@
       </view>
       <view h-20 border="~ primary solid" center text-18>边框颜色</view>
     </view>
-    <wd-select-picker
-      label="字体大小"
-      :columns="themeStore.fontSizecolumns"
-      v-model="rootStyle.rootFontSize"
-      :z-index="100"
-      type="radio"
-      @change="handleChange"
-    />
-
     <view>
       <view p-2>
-        <wd-button :round="false" m-2>确认</wd-button>
-        <wd-button :round="false" m-2 disabled>禁止</wd-button>
+        <wd-button m-2>确认</wd-button>
+        <wd-button m-2 disabled>禁止</wd-button>
 
-        <wd-button :round="false" m-2 icon="add" plain>添加</wd-button>
+        <wd-button m-2 icon="add" plain>添加</wd-button>
         <view flex gap-5>
-          <wd-button :round="false" block flex-1>确认</wd-button>
-          <wd-button :round="false" block flex-1 custom-class="btn-secondary">取消</wd-button>
+          <wd-button block flex-1>确认</wd-button>
+          <wd-button block flex-1 custom-class="btn-secondary">取消</wd-button>
         </view>
-        <wd-button :round="false" block my-2 size="large">主要按钮</wd-button>
-        <wd-button :round="false" block my-2 size="large" custom-class="btn-secondary">
-          次要按钮
-        </wd-button>
-        <wd-button :round="false" block my-2 plain size="large">镂空按钮</wd-button>
+        <wd-button block my-2 size="large">主要按钮</wd-button>
+        <wd-button block my-2 size="large" custom-class="btn-secondary">次要按钮</wd-button>
+        <wd-button block my-2 plain size="large">镂空按钮</wd-button>
       </view>
       <view py-2>
         <wd-input type="text" v-model="value" placeholder="请输入用户名" />
@@ -93,7 +91,7 @@
         </block>
       </wd-tabs>
       <wd-segmented mt-6 :options="list" v-model:value="current" />
-      <wd-calendar v-model="value" label="日期选择" />
+      <wd-calendar v-model="value" label="日期选择" :z-index="103" />
       <wd-notice-bar
         text="这是一条消息提示信息，这是一条消息提示信息，这是一条消息提示信息"
         prefix="warn-bold"
@@ -108,11 +106,12 @@
         <wd-input-number v-model="slider" />
       </view>
       <view mt-6>
-        <wd-radio-group v-model="value" shape="dot">
+        <wd-radio-group v-model="value1" shape="dot">
           <wd-radio :value="1">单选框1</wd-radio>
           <wd-radio :value="2">单选框2</wd-radio>
+          <wd-radio :value="3" disabled>单选框2</wd-radio>
         </wd-radio-group>
-        <wd-radio-group v-model="value" shape="dot" inline>
+        <wd-radio-group v-model="value1" shape="dot" inline>
           <wd-radio :value="1">单选框1</wd-radio>
           <wd-radio :value="2">单选框2</wd-radio>
         </wd-radio-group>
@@ -151,7 +150,7 @@ const themeStore = useThemeStore()
 console.log(themeStore)
 const { theme, rootStyle, themeVars } = storeToRefs(themeStore)
 const value = ref<number>(Date.now())
-const value1 = ref<number>(1)
+const value1 = ref<number>(3)
 const value2 = ref(['1'])
 const value10 = ref('')
 function handleConfirm({ value }) {
